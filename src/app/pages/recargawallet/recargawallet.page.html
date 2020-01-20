@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+          <ion-button (click)="back()">        
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+    </ion-buttons>  
+    <ion-title text-center class="my-labelsize negrita" color = "verde" style="text-transform: none;">Wallet</ion-title>      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding center text-center >
+
+    <div text-center>
+        <img width="150" height="150" src="assets/imgs/login_img.png">   
+        <br>                 
+        <!--ion-label  color = "verde" class="my-labelsize negrita" style="text-transform: none;" >Wallet</ion-label-->
+    </div> 
+
+    <div padding text-center>
+          <ion-row>
+              <ion-col>                                                      
+                  <div>
+                    <ion-list>
+                      <ion-radio-group [(ngModel)]="selected_recarga">                     
+        
+                        <ion-item *ngFor="let item of listopcionrecarga">
+                          <ion-label color = "gris" class = "my-labelsize_a">{{item.descripcion}}</ion-label>
+                          <ion-radio slot="start" value="{{item.valor}}"></ion-radio>
+                        </ion-item>                    
+                                                            
+                      </ion-radio-group>
+                    </ion-list>
+                </div>                                          
+              </ion-col>
+          </ion-row>    
+
+          <ion-row *ngIf="selected_recarga == 0">
+              <ion-col>
+                  <div >
+                      <ion-item >                                                                
+                          <ion-input name="coupon" type="text" maxlength="15" placeholder="Coupon" [(ngModel)]="coupon" required ></ion-input>
+                      </ion-item>              
+                   </div>  
+              </ion-col>               
+          </ion-row>    
+
+          <ion-row>
+            <ion-col>        
+                <div>              
+                    <ion-button color="verde" style="text-transform: none;" shape="round" size="medium" (click)="recargarCredito()" expand="block">Ok</ion-button>
+                    <!--ion-button color="verde" style="text-transform: none;" shape="round" size="medium" (click)="recargaCredito2()" expand="block">Stripe</ion-button-->
+                </div>
+            </ion-col>
+          </ion-row>   
+    </div> 
+
+</ion-content>

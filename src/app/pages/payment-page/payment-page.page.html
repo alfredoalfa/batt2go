@@ -1,0 +1,120 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">      
+            <ion-button (click)="back()">        
+              <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+      </ion-buttons>          
+      <ion-title text-center class="my-labelsize negrita" color = "verde" style="text-transform: none;">Credit Card</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <div text-center>
+            <img width="150" height="150" src="assets/imgs/login_img.png">   
+            <br>                 
+            <!--ion-label  color = "verde" class="my-labelsize negrita" style="text-transform: none;" >Credit Card</ion-label-->
+    </div> 
+    
+    
+    <div text-center>
+        <ion-text class="my-labelsize_a" color="phantone" >{{email}}</ion-text>        
+    </div>
+
+    <ion-card  padding>
+        <form #form="ngForm" (ngSubmit)="paymentsubmit(form)" method="post">
+            <div text-center>                        
+                        <ion-text color = "phantone" class="my-labelsize_a">Creadit Card Information</ion-text>
+            </div>
+                        
+            <ion-row  justify-content-left>
+                <ion-col>
+                    <div padding>
+                        <ion-item >                                                           
+                            <ion-input name="tarjeta" type="text" maxlength="19" placeholder="Credit card number" [(ngModel)]="tarjeta" (ionChange)="_onChangeTarjeta($event)" (keypress)="_keyPress($event)" required ></ion-input>                                            
+                        </ion-item>                       
+                    </div>                   
+                </ion-col>  
+                                
+            </ion-row>  
+
+            <ion-row>                                
+                <ion-col>                       
+                    <ion-item>                        
+                        <ion-select  name="month" placeholder="MM" [(ngModel)]="month" [ngModelOptions]="{standalone: true}" required>                          
+                            <ion-select-option *ngFor="let item of all_months" value="{{item.month}}">{{item.month}} </ion-select-option>                        
+                        </ion-select>                                                
+                    </ion-item>
+                    
+                </ion-col>
+
+                <ion-col >                                                              
+                    <ion-item>                        
+                        <ion-select  name="year" placeholder="YYYY" [(ngModel)]="year" [ngModelOptions]="{standalone: true}" required>                                              
+                            <ion-select-option *ngFor="let item of all_years" value="{{item.year}}">{{item.year}} </ion-select-option>                        
+                        </ion-select>                                                
+                    </ion-item>        
+                </ion-col>
+
+                <ion-col>                    
+                    <ion-item >                       
+                        <ion-input name="cod_seguridad" type="text" minlength = "3" maxlength="3" placeholder="CVV" [(ngModel)]="cod_seguridad" (keypress)="_keyPress($event)" required ></ion-input>
+                    </ion-item>              
+                </ion-col>
+            </ion-row>
+            
+            <ion-row>                                
+                <ion-col>                          
+                    <ion-item >                                                                
+                        <ion-input name="name" type="text" maxlength="25" placeholder="Name" [(ngModel)]="name" required ></ion-input>
+                    </ion-item>              
+                </ion-col>
+
+                <ion-col >                   
+                    <ion-item >
+                        <ion-input name="lastname" type="text" maxlength="25" placeholder="Last Name" [(ngModel)]="lastname" required ></ion-input>
+                    </ion-item>              
+                </ion-col>
+
+                <ion-col>                    
+                    <ion-item >                       
+                        <ion-input name="zipcode" type="text" maxlength="6" placeholder="Zip Code" [(ngModel)]="zipcode" (keypress)="_keyPress($event)" required ></ion-input>
+                    </ion-item>              
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                 <ion-col>                      
+                        <div>
+                            <ion-item>            
+                                <ion-checkbox name="primarytdc" color="gris" [(ngModel)]="primarytdc" (ionChange)="_onChangePrimarytdc()"></ion-checkbox>
+                                &nbsp;
+                                <ion-label>Primary Credit Card</ion-label>                                
+                              </ion-item>
+                             
+                        </div>                      
+                 </ion-col>
+            </ion-row>
+
+           
+            <!--div padding text-center *ngIf="updatecc; else elseBlock"--> 
+                                                 
+            <div *ngIf="!updatecc; else elseBlock" padding text-center>
+                    <ion-button shape="round" color="verde" size="large" (click)='registrar_Tarjeta(form)' [disabled]="form.invalid" expand="block">Ok</ion-button>                                                         
+            </div>
+            
+            <ng-template #elseBlock>
+                    <div padding text-center>                                     
+                            <ion-button shape="round" color="verde" size="large" (click)='update_Tarjeta(form)' [disabled]="form.invalid" expand="block">Update</ion-button>                                                            
+                    </div>
+            </ng-template>            
+        </form>
+    </ion-card>
+      
+</ion-content>
+
+
+<!--div padding text-center>                            
+        <ion-button color="verde" size="large" (click)='registrar_Tarjeta(form)' [disabled]="form.invalid" expand="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-button>                                     
+</div-->
+

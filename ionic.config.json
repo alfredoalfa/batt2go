@@ -1,0 +1,7 @@
+{
+  "name": "batt_charge",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

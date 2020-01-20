@@ -1,0 +1,36 @@
+<ion-toolbar>
+    <ion-buttons slot="start">      
+      <ion-button (click)="back()">        
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title text-center class="my-labelsize negrita" color = "verde" style="text-transform: none;">Settings</ion-title>
+  </ion-toolbar>
+
+<ion-content>
+    
+    <div text-center>
+        <img width="150" height="150" src="assets/imgs/login_img.png">   
+        <br>                 
+        <!--ion-label  color = "verde" class="my-labelsize negrita" style="text-transform: none;" >Settings</ion-label-->
+    </div> 
+
+
+    <div text-center>
+        <ion-text class="my-labelsize_a" color="phantone" >{{email}}</ion-text>        
+    </div>
+
+    <ion-card  padding>
+        
+        <ion-list>        
+            <ion-item *ngFor="let setting of settings" (click)="itemSelected(setting.id)">
+                {{ setting.name }}               
+                <button  slot="end" clear="true" >
+                    <!--ion-icon name="arrow-forward"></ion-icon-->
+                </button>
+            </ion-item>
+        </ion-list> 
+                  
+    </ion-card>  
+
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+      <ion-button (click)="back()">        
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title text-center color = "verde" class="my-labelsize negrita" style="text-transform: none;">       
+      Password Change
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div text-center>
+      <img width="150" height="150" src="assets/imgs/login_img.png">         
+  </div> 
+
+  <div padding text-center>                  
+      <!--ion-label  color = "verde" class="my-labelsize negrita" style="text-transform: none;" >Password Change</ion-label-->
+  </div>
+
+  
+  <div padding text center>    
+      <div>
+        <form #form="ngForm" (ngSubmit)="cambiarpass(form)" method="post">
+              <ion-grid>
+                <ion-row justify-content-center>
+                  <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">               
+                    <div padding>
+                        <ion-item>                     
+                            <ion-icon size="small" name="mail"></ion-icon>
+                            <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required ></ion-input>                            
+                        </ion-item>
+                            
+                        <ion-item>
+                          <ion-icon size="small" name="lock"></ion-icon>                
+                          <ion-input name="oldpass" type="password" placeholder="Old Password" [(ngModel)]="oldpass" required clearInput></ion-input>
+                        </ion-item>
+            
+                        <ion-item>
+                            <ion-icon size="small" name="lock"></ion-icon>                
+                            <ion-input name="newpass" type="password" placeholder="New Password" [(ngModel)]="newpass" required clearInput></ion-input>
+                        </ion-item>
+                    </div>
+                          
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+        </form> 
+      </div>             
+      
+      <div padding text-center style="background-color: #e9e9e9;">
+                            
+          <ion-button color= "verde" size="large" (click)='changepass(form)' [disabled]="form.invalid" expand="">Change Password</ion-button>
+                                       
+      </div>
+  </div>  
+
+</ion-content>
+
+

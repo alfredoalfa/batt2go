@@ -1,0 +1,524 @@
+<ion-header>        
+    <ion-toolbar>
+      <ion-buttons slot="start">      
+        <ion-button (click)="back()">        
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title  text-center class="my-labelsize negrita" color = "verde" style="text-transform: none;">History</ion-title>
+    </ion-toolbar>
+</ion-header>
+  
+
+<ion-content>
+
+  <div text-center>
+      <img width="150" height="150" src="assets/imgs/login_img.png">   
+      <br>                 
+      <!--ion-label  color = "verde" class="my-labelsize negrita" style="text-transform: none;" >History</ion-label--> 
+  </div> 
+
+
+    
+  <ion-card *ngFor="let item of batthistory">
+    
+    <ion-item >
+        <!--Bloque correspondiente a historial renta-->
+        <!--div text-wrap *ngIf="item.campo7 === 2; else elseBlockWallet"-->
+        <div text-wrap>
+                        
+            <ion-label text-wrap *ngIf="item.tipo_pago === 2; else elseBlock1"> 
+                
+                <ion-text class="ionlabelsize_a" color="verde">
+                        Description                                                 
+                </ion-text>                                                        
+                <br>
+                <ion-text class="ionlabelsize_a" color="" >                                                    
+                        {{item.descripcion}}                        
+                </ion-text>
+                <br>                 
+                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                        Serial Number
+                </ion-text>
+                <br>
+                <ion-text class="ionlabelsize_a" color="" >                                                    
+                        {{item.codigobatt}}
+                </ion-text>
+                <br>
+                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                    Rented at
+                </ion-text>                              
+                <br>
+                <ion-text class="ionlabelsize_a" color="" >                                                    
+                        {{item.ubicacion_alquiler}}                        
+                </ion-text>                
+                <br>
+                <ion-text class="ionlabelsize_a" color="" >                                                    
+                        {{item.direccion_alquiler}}
+                </ion-text>
+                <br>                                    
+                <ion-text class="ionlabelsize_a" color="verde">
+                    Date - Time
+                </ion-text>          
+                <br>
+                <ion-text class="ionlabelsize_a" color="" >                                                    
+                     {{item.fechaalquiler}}
+                </ion-text>                  
+                <br>
+                <ion-text class="ionlabelsize_a" color="verde">
+                    For
+                </ion-text>                                      
+                <ion-text class="ionlabelsize_a" color="" >                                                    
+                            {{item.horas}}
+                </ion-text>          
+                <ion-text class="ionlabelsize_a" color="verde">
+                        Hour
+                </ion-text>
+                <br>
+                <ion-text class="ionlabelsize_a" color="verde">
+                        Amount Charged
+                </ion-text>                    
+                <br>                
+                <ion-text class="ionlabelsize_a" style="color:#FF0000" >                                                                          
+                      {{ item.monto * -1 | number: '1.1-2' | currency: 'USD' | lowercase}}
+                      
+                </ion-text>                
+                <br>                                          
+                <ion-text class="ionlabelsize_a" color="verde">
+                        MUST BE RETURNED BEFORE
+                </ion-text>                    
+                <br>
+                <ion-text class="ionlabelsize_a" color="" >                                                    
+                        {{item.deberetornar}}
+                </ion-text>
+                <br>                
+                <ion-text class="ionlabelsize_a" color="" >                                                                           
+                        If not; an extra hour will automatically be charged to your account for the amount of
+                        $1.00 per hour up to a máximum of $4.99 per day.              
+                </ion-text>   
+                <br>
+                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                        Available Balance
+                </ion-text>
+                <br>
+                <ion-text class="ionlabelsize_a" color="" >                                                                                                              
+                        {{ item.disponibilidad_anterior + item.monto | number: '1.1-2' | currency: 'USD' | lowercase}}
+                </ion-text>
+                <br>
+                <ion-text class="ionlabelsize_a" color="verde">
+                        Never run out of power again…
+                </ion-text> 
+                
+            </ion-label><!--Fin Baterry Rental-->                                                   
+
+            <ng-template #elseBlock1>
+                <!--Creddit Add-->
+                <ion-label text-wrap *ngIf="item.tipo_pago === 1; else elseBlock2">                                         
+                        <ion-text class="ionlabelsize_a" color="verde">
+                                Description
+                        </ion-text>                                                        
+                        <br>
+                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                {{item.descripcion}}
+                        </ion-text>
+                        <br>                 
+                        <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                Previous Balance
+                        </ion-text>
+                        <br>
+                        <ion-text class="ionlabelsize_a" color="" >                                                                                                    
+                                {{ item.disponibilidad_anterior | number: '1.1-2' | currency: 'USD' | lowercase}}
+                        </ion-text>
+                        <br>
+                        <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                Amount added to your Wallet
+                        </ion-text>                              
+                        <br>
+                        <ion-text class="ionlabelsize_a" color="" >                                                                            
+                                {{ item.monto | number: '1.1-2' | currency: 'USD' | lowercase}}
+                        </ion-text>                        
+                        <br>                    
+                        <ion-text class="ionlabelsize_a" color="verde">
+                                Date - Time
+                        </ion-text>          
+                        <br>
+                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                {{item.fecha}}
+                        </ion-text>                  
+                        <br>
+                        <ion-text class="ionlabelsize_a" color="verde">
+                              Payment Type
+                        </ion-text>                        
+                        <br>              
+                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                              {{item.tipotarjeta}}: {{item.tarjeta}}
+                        </ion-text>          
+                        
+                        <br>
+                        <ion-text class="ionlabelsize_a" color="verde">
+                                Availabel Balance
+                        </ion-text>                    
+                        <br>                
+                        <ion-text class="ionlabelsize_a">                                                                                
+                            {{ item.midisponibilidad | number: '1.1-2' | currency: 'USD' | lowercase}}
+                        </ion-text>                
+                        <br>                                                                                  
+                        <ion-text class="ionlabelsize_a" color="" >                                                                           
+                                Be in charge! Never run out of power again…
+                        </ion-text>   
+                        
+                </ion-label><!--Fin Baterry Rental--> 
+                
+                <ng-template #elseBlock2>
+                        <!--Baterry Return-->                                                
+                        <ion-label text-wrap *ngIf="item.tipo_pago === 6; else elseBlock3">                                         
+                                <ion-text class="ionlabelsize_a" color="verde">
+                                        Description
+                                </ion-text>                                                        
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                        {{item.descripcion}}
+                                </ion-text>
+                                <br>                 
+                                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                        Serial Number
+                                </ion-text>
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                        {{item.codigobatt}}
+                                </ion-text>
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                    Rented at
+                                </ion-text>                              
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                     {{item.ubicacion_alquiler}}
+                                </ion-text>
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                        {{item.direccion_alquiler}}                                        
+                                </ion-text>
+                                <br>                                    
+                                <ion-text class="ionlabelsize_a" color="verde">
+                                    Date - Time
+                                </ion-text>          
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                     {{item.fechaalquiler}}
+                                </ion-text>                  
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="verde">
+                                    Returned at
+                                </ion-text>                                      
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                        {{item.ubicacion_devolucion}}
+                                </ion-text>
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                        {{item.direccion_devolucion}}
+                                </ion-text>                                          
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="verde">
+                                       Date - Time
+                                </ion-text>                    
+                                <br>                
+                                <ion-text class="ionlabelsize_a">                                                    
+                                        {{item.fechadevolucion}}
+                                </ion-text>                                                
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                        Available Balance
+                                </ion-text>
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="" >                                                                                                                                                                             
+                                        {{ item.midisponibilidad | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                </ion-text>
+                                <br>
+                                <ion-text class="ionlabelsize_a" color="verde">
+                                       Thank you for using our Service…
+                                </ion-text>    
+                        </ion-label><!--Fin Baterry Rental--> 
+                        
+                        
+                        <ng-template #elseBlock3>
+                                <!--Battery Rental - Extended Time-->
+                                <ion-label text-wrap *ngIf="item.tipo_pago === 3; else elseBlock4">                                         
+                                      <ion-text class="ionlabelsize_a" color="verde">
+                                              Description
+                                      </ion-text>                                                        
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="" >                                                    
+                                              {{item.descripcion}}
+                                      </ion-text>
+                                      <br>                 
+                                      <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                              Serial Number
+                                      </ion-text>
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="" >                                                    
+                                              {{item.codigobatt}}
+                                      </ion-text>
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                                Rented at
+                                      </ion-text> 
+                                      <br>                             
+                                      <ion-text class="ionlabelsize_a" color="" >                                                    
+                                          {{item.ubicacion_alquiler}}
+                                      </ion-text>
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="" >                                                    
+                                              {{item.direccion_alquiler}}
+                                      </ion-text>
+                                      <br>                                    
+                                      <ion-text class="ionlabelsize_a" color="verde">
+                                                Date - Time
+                                      </ion-text>          
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                {{item.fechaalquiler}}
+                                      </ion-text>                  
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="verde">
+                                                For
+                                      </ion-text>                                      
+                                      <ion-text class="ionlabelsize_a" color="" >                                                    
+                                              {{item.horas}}
+                                      </ion-text>          
+                                      <ion-text class="ionlabelsize_a" color="verde">
+                                              Hour
+                                      </ion-text>
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="verde">
+                                              Amount Charged
+                                      </ion-text>                    
+                                      <br>                
+                                      <ion-text class="ionlabelsize_a" style="color:#FF0000" >                                                                                               
+                                           {{ item.monto * -1 | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                      </ion-text>                
+                                      <br>                                          
+                                      <ion-text class="ionlabelsize_a" color="verde">                                              
+                                              Your Battery had to be returned before:                                              
+                                      </ion-text>                    
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="" >                                                    
+                                              {{item.deberetornar}}
+                                              and an extra hour was automatically charged to your account
+                                      </ion-text>
+                                      <br>                                                 
+                                      <ion-text class="ionlabelsize_a" color="verde" >                                                                           
+                                                MUST BE RETURNED BEFORE
+                                      </ion-text>   
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                {{item.deberetornartimeextender}}
+                                      </ion-text>
+                                      <br>
+                                      <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                              Available Balance
+                                      </ion-text>
+                                      <br>
+                                      <ion-text type="string" class="ionlabelsize_a" color="" >                                                                                                                                                                                                                                         
+                                              {{ item.midisponibilidad | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                      </ion-text>
+                                                                                                                                                                              
+                                </ion-label><!--Fin Baterry Rental-->                                                   
+
+                                <ng-template #elseBlock4>                                        
+                                        <!--Battery Purchased-->
+                                        
+                                        <ion-label text-wrap *ngIf="item.tipo_pago === 7;else elsetipo4">
+                                                <ion-text class="ionlabelsize_a" color="verde">
+                                                        Description 
+                                                </ion-text>                                                        
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                        {{item.descripcion}}
+                                                </ion-text>
+                                                <br>                 
+                                                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                                        Serial Number
+                                                </ion-text>
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                        {{item.codigobatt}}
+                                                </ion-text>
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                                    Rented at
+                                                </ion-text>       
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                        {{item.ubicacion_alquiler}}
+                                                </ion-text>                       
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                        {{item.direccion_alquiler}}
+                                                </ion-text>
+                                                <br>                                    
+                                                <ion-text class="ionlabelsize_a" color="verde">
+                                                    Date - Time
+                                                </ion-text>          
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                     {{item.fechaalquiler}}
+                                                </ion-text>                  
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="verde">
+                                                         Your Battery had to be returned before: 
+                                                </ion-text>                                      
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                           {{item.fechapurchased}}  and was not returned. As accepted in the General Terms and Conditions you agreed to purchase the battery after the maximum rental period allowed.
+                                                </ion-text>                                  
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="verde">
+                                                        Purchase Price                                
+                                                </ion-text>                    
+                                                <br>                
+                                                <ion-text class="ionlabelsize_a" style="color:#FF0000" >                                                    
+                                      
+                                                     {{ (item.monto + item.tax) * -1 | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                                </ion-text>                
+                                                <br>                                          
+                                                <ion-text class="ionlabelsize_a" color="verde">
+                                                      FL. Sales Tax:
+                                                </ion-text>                    
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" style="color:#FF0000" >                                                                                                            
+                                                      
+                                                      {{ item.tax | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                                </ion-text>
+                                                <br>                
+                                                <ion-text class="ionlabelsize_a" color="verde" >                                                                           
+                                                      Total Amount Charged
+                                                </ion-text>   
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" style="color:#FF0000">                                                    
+                                                     
+                                                      {{ item.monto * -1 | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                                </ion-text>
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                                        Available Balance
+                                                </ion-text>
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="" >                                                                                                            
+                                                     
+                                                        {{ item.midisponibilidad | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                                </ion-text>
+                                                <br>
+                                                <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                        Thank you for your purchase!...
+                                                </ion-text>
+                                                                                
+                                        </ion-label> 
+                                        <ng-template #elsetipo4>
+                                             
+                                             <ion-label text-wrap *ngIf="item.tipo_pago === 4;">
+                                                        <ion-text class="ionlabelsize_a" color="verde">
+                                                                Description
+                                                        </ion-text>                                                        
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                                {{item.descripcion}}
+                                                        </ion-text>
+                                                        <br>                 
+                                                        <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                                                Serial Number
+                                                        </ion-text>
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                                {{item.codigobatt}}
+                                                        </ion-text>
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                                            Rented at
+                                                        </ion-text>       
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                                {{item.ubicacion_alquiler}}
+                                                        </ion-text>                       
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                                {{item.direccion_alquiler}}
+                                                        </ion-text>
+                                                        <br>                                    
+                                                        <ion-text class="ionlabelsize_a" color="verde">
+                                                            Date - Time
+                                                        </ion-text>          
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                             {{item.fechaalquiler}}
+                                                        </ion-text>                  
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="verde">
+                                                              For
+                                                        </ion-text>                                      
+                                                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                                {{item.horas}}
+                                                        </ion-text>          
+                                                        <ion-text class="ionlabelsize_a" color="verde">
+                                                              Hour
+                                                        </ion-text>                                      
+                                                        <br>                                                        
+                                                        <ion-text class="ionlabelsize_a" color="verde">
+                                                             Returned at                               
+                                                        </ion-text>                    
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="verde">
+                                                                {{item.ubicacion_devolucion}}
+                                                        </ion-text>
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="verde">
+                                                                {{item.direccion_devolucion}}
+                                                        </ion-text>                    
+                                                        <br>   
+                                                        <ion-text class="ionlabelsize_a" color="verde">
+                                                                Date - Time
+                                                        </ion-text>          
+                                                        <br>                                                     
+                                                        <ion-text class="ionlabelsize_a" color="">
+                                                             {{item.fechadevolucion}}         
+                                                        </ion-text>                    
+                                                        <br>                                                                                                                                                                 
+                                                        <ion-text class="ionlabelsize_a" color="">
+                                                             Your Battery was returned within the first five (05) minutes of the initial period. 
+                                                             We are crediting your Wallet account
+                                                        </ion-text>                    
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" style="color:#FF0000" >                                                                                                                                                                          
+                                                              {{ item.monto | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                                        </ion-text>
+                                                        <br>                                                                                                                             
+                                                        <ion-text class="ionlabelsize_a" color="verde" >                                                    
+                                                                Available Balance
+                                                        </ion-text>
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="" >                                                                                                                                                                         
+                                                                {{ item.midisponibilidad | number: '1.1-2' | currency: 'USD' | lowercase}}
+                                                        </ion-text>
+                                                        <br>
+                                                        <ion-text class="ionlabelsize_a" color="" >                                                    
+                                                                        Thank you for using our Service…
+                                                        </ion-text>
+                                                                                        
+                                                </ion-label>
+                                             
+                                        </ng-template>
+                                                                           
+                                </ng-template><!--Fin <ng-template #elseBlock4>-->
+                        </ng-template><!--Fin <ng-template #elseBlock3>-->
+                </ng-template><!--Fin <ng-template #elseBlock2>-->
+            </ng-template>    
+        </div> <!--Fin Rental-->        
+        
+    </ion-item>
+    
+  </ion-card>
+
+</ion-content>
+
+

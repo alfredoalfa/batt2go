@@ -1,0 +1,78 @@
+Control de Actividades.
+
+Fecha: 06/12/2019 16:35
+Cambios: 
+ 1. Separación de nro de tarjeta de crédito.
+ 2. Se permite elegir cuál será la TDC principal. 
+ 3. Pago Authorize elige la TDC registrada como pricipal para realizar pago. 	
+ 4. Para escoger una tarjeta diferente a la principal se pisa sobre "Credit card number" y se desplega lsita de TDC para escoger.
+ 5. Recarga de wallet con cupones.
+ 6. Acceso directo una vez que se acepte los términos y condiciones.
+
+
+Fecha: 11/12/2019 16:30 
+1. Se agregó bontón para escoger tdc al momento de recargar con Authorizet.
+2. Si la tarjeta no existe, se agrega automáticamente. En caso de no tener primary card, se agrega como primary card.
+3. Se capturan errores de pago enviados por Authorize.
+4. Se modificaron peticiones.php y authorizenet.php para los cambios anteriores.
+
+Fecha: 12/12/2019 15:40
+1. Se configuró envío de correo al cliente después de pagar.
+
+Fecha: 16/12/2019 13:03
+1. Se agrega control de versiones en el menú Setting.
+
+Fecha: 17/12/2019 09:04
+1. Actualización de la rama producción.
+
+Fecha: 18/12/2019 12:56
+1. Corrigiendo error de conexión.
+
+Fecha: 19/12/2019 12:34
+
+Fecha: 24/12/2019 08:45
+1. Correción de falla de conexión con versión del 09/12/2019.
+
+Fecha: 26/12/2019 12:15
+///////////////////////////////////
+Fecha: 03/01/2020
+Cambios realizados
+4) En vez de For Rent: debería de ser: “Availability” (Listo)
+5) Donde dice: Empty space, debe de leerse: “Available Slots” (Listo)
+6) En la pantalla de presentación de la aplicación se debe de cambiar dentro de la misma aplicación los formatos de dinero.
+   Donde dice x.xx$ debe escribirse: $0.99  (Listo)
+23)Al entrar a la opción de “Wallet” va a la página de selección de opciones y saldo. En el cual siempre debe de incluir decimales ($0.00) (Listo)
+24) Donde lee Load Balance, debe de leer: “Add Credit”  (Listo)
+25) En los montos cambiar el formato el cual siempre debe de ser $ 4.99 y donde $4.99 es un día completo
+    serian $4.99 - $9.99 - $14.99 (Listo)
+27) El monto siempre debe de aparecer con dos dígitos decimales $ 10.00 (Listo)
+
+CONSIDERAR CAMBIAR:
+campos de mes y año e indicándolos como MM / YYYY ya que crea confusión al momento de pago que se ingresa sólo los dos últimos dígitos del año por lo caul resulta en un error, teniendo que volver a tras u revisar los datos haciendo el proceso mas fastidioso y largo  (Listo)
+
+- Al pagar con tarjeta de credito ay que poner : " Nombre , Apellido y Zip Code" en banco lo exige por medida de seguridad si un cliente rechaza la transaccion (Listo)
+
+Fecha: 05/01/2020 01:01
+1. Se agrega botón back
+
+Fcha: 07/01/2020 00:07
+1. Se actualizaron nuevos montos de recarga walle 
+   ($ 4.99, $ 9.99, $ 14.99, Coupon)
+2. Se actaulizaron los términos y condiciones,
+3. Se agregraron las Technical Faq.
+
+Fecha: 08/01/2020 11:26
+1. Se agrega qrScanner en la rama ajcv_qrscanner.
+2. Se eliminó el zbar como lector de qr.
+
+Fecha: 12/01/2020 20:26
+1. Se eliminaron todos los plugins relacionados con Qr solo dejando el que funciona para android y ios "QRScaner"
+2. Se agrego codigo en el html y en controlador de maps para que funcionara el qr scanner.
+
+Fecha: 13/01/2020 20:26
+Nueva version de producción version="1.0.1"
+version del manisfest android:versionCode="10002"
+
+Fecha: 16/01/2020 18:26
+Nueva version de producción version="1.0.2"
+version del manisfest android:versionCode="10003"

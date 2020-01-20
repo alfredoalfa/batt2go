@@ -1,0 +1,39 @@
+<ion-toolbar>
+  <ion-buttons slot="start">      
+    <ion-button (click)="back()">        
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title text-center class="my-labelsize negrita" color = "verde" style="text-transform: none;">Support</ion-title>
+</ion-toolbar>
+
+
+<ion-content>
+
+    <div text-center>
+        <img width="150" height="150" src="assets/imgs/login_img.png">   
+        <br>                 
+        <!--ion-label  color = "verde" class="my-labelsize negrita" style="text-transform: none;" >Support</ion-label-->
+    </div> 
+
+
+    <ion-list>        
+        <ion-item *ngFor="let support of supports" (click)="itemSelected(support.id)">
+            {{ support.descrip }}
+            <button  slot="end" (click)="itemSelected(support.id)">                
+                <!--ion-icon name="arrow-forward"></ion-icon-->
+            </button>
+        </ion-item>
+    </ion-list>
+
+    <!--ion-list *ngFor="let grocery of groceries">        
+        
+            <button ion-item  (click)="itemSelected(item)">
+                {{ grocery }}
+            </button>
+
+        
+    </ion-list-->
+
+</ion-content>
+

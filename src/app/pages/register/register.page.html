@@ -1,0 +1,77 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+          <ion-button (click)="back()">        
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+    </ion-buttons>    
+    <ion-title text-center class="my-labelsize negrita" color = "verde" style="text-transform: none;">Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center>
+        <img width="150" height="150" src="assets/imgs/login_img.png">                           
+  </div> 
+
+  <form #form="ngForm" (ngSubmit)="registersubmit(form)" method="post">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <!--div text-center>
+            <h3>New User</h3>
+          </div-->
+          <div padding>
+            <!--ion-item>
+                <ion-icon size="small" name="person"></ion-icon>
+                <ion-input  name="nombre" type="text" placeholder="First Name" [(ngModel)]="nombre" required clearInput></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon size="small" name="person"></ion-icon>
+                <ion-input name="apellido" type="text" placeholder="Last Name" [(ngModel)]="apellido" required clearInput></ion-input>
+            </ion-item-->
+
+            <!--ion-item>
+                <ion-icon size="small" name="card"></ion-icon>                
+                <ion-input name="docid" type="text" placeholder="Id" [(ngModel)]="docid" required clearInput></ion-input>
+            </ion-item-->
+
+            <ion-item>
+                <!--ion-icon name="mail" item-start class="text-primary"></ion-icon-->
+                <ion-icon size="small" name="mail"></ion-icon>
+                <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required ></ion-input>
+            </ion-item>
+
+            <!--ion-item>
+                <ion-icon size="small" name="phone-portrait"></ion-icon>                
+                <ion-input name="telf" type="email" placeholder="phone" [(ngModel)]="telf" required clearInput></ion-input>
+            </ion-item-->
+
+            <ion-item>
+                <ion-icon size="small" name="lock"></ion-icon>                
+               <ion-input name="pass" type="password" placeholder="Password" [(ngModel)]="password" required clearInput></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon size="small" name="lock"></ion-icon>                
+                <ion-input name="passconf" type="password" placeholder="Confirm Password" [(ngModel)]="passconf" required clearInput></ion-input>
+             </ion-item>
+          </div>
+          <div padding>
+                      
+            <ion-button color = "verde" size="large" (click)='registerClient2(form)' [disabled]="form.invalid" expand="block">Sign in</ion-button>
+                                 
+          </div>
+
+          <!--div padding class="left">                      
+            <ion-button color = "verde" size="large" (click)='back()'  expand="block">Back</ion-button>                                
+          </div-->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>
+

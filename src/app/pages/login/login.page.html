@@ -1,0 +1,60 @@
+<ion-header>        
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+      <ion-button (click)="back()">        
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title text-center class="my-labelsize negrita" color = "verde" style="text-transform: none;">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center>
+      <img width="150" height="150" src="assets/imgs/login_img.png">                    
+  </div>    
+  <form #form="ngForm" (ngSubmit)="loginsubmit(form)">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+         
+          <div padding>
+            <ion-item>                 
+              <ion-icon size="small" name="mail"></ion-icon>
+              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required clearInput></ion-input>              
+            </ion-item>
+            <ion-item>              
+              <ion-icon size="small" name="lock"></ion-icon>
+              <ion-input name="password" type="password" placeholder="Password" [(ngModel)]="password" required clearInput></ion-input>              
+                          
+            </ion-item>
+          </div>
+
+          <div padding text-center>            
+            <ion-label color = "gris" style="text-transform: none;" (click)='registerPage()'>Register with your email</ion-label>            
+          </div>
+
+          <div padding text-center>                        
+            <ion-label color = "gris" style="text-transform: none;" (click)="verificaEmail()">Forget Password</ion-label>                      
+          </div>
+          
+          <div padding text-center>
+            <ion-button color = "verde" style="text-transform: none;"  size="medium" (click)='loginClient_2(form)' [disabled]="form.invalid" expand="block">Login</ion-button>            
+          </div>
+          
+          <div padding text-center>            
+            <!--ion-button  color = "verde" style="text-transform: none;" shape="round" size="large" [disabled]="form.invalid" expand="block">Login with Facebook</ion-button-->                        
+            <ion-label color = "gris" class="my-labelsize_a" style="text-transform: none;" (click)="loginfacebook()">Login with Facebook</ion-label>                      
+          </div>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<!--ion-fab vertical="bottom" slot="fixed" horizontal="start">
+    <ion-button class="button" shape="round" color="danger" size="small" (click)="back()">
+      <ion-icon size="small" slot="icon-only" name="arrow-round-back"></ion-icon> 
+    </ion-button>
+</ion-fab--> 

@@ -1,0 +1,41 @@
+<ion-header>        
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+      <ion-button (click)="back()">        
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title text-center color = "verde" class="my-labelsize negrita" style="text-transform: none;">My Credit Cards</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+
+    <div text-center>
+        <img width="150" height="150" src="assets/imgs/login_img.png">   
+        <br>                 
+        
+    </div> 
+  
+    <ion-card  padding>
+      <form #form="ngForm" method="post">
+          <ion-row  justify-content-left>
+              <ion-col>
+                  <div padding>                      
+                        <ion-item>
+                            <ion-label position="floating" color="verde">Enter your password again</ion-label>
+                            <ion-input name="pass" type="password" color="verde" [(ngModel)]="pass" required ></ion-input>
+                            <ion-icon name="lock" slot="end"></ion-icon>
+                        </ion-item>
+                  </div>                   
+              </ion-col>  
+                              
+          </ion-row>  
+
+          <div padding text-center>
+              <ion-button color="verde" style="text-transform: none;" shape="round" size="medium" (click)="verificarUser()" [disabled]="form.invalid" expand="block">Ok</ion-button>
+            </div>
+      </form>
+    </ion-card>  
+  
+</ion-content>

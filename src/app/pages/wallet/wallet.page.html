@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">      
+            <ion-button (click)="back()">        
+              <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+      </ion-buttons>
+      <!--ion-title><img src="assets/imgs/logobatt2gomapa_menu.png"></ion-title-->    
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-card class="welcome-card">
+      
+    <ion-card-header>
+      <ion-card-subtitle>Wallet</ion-card-subtitle>
+      <ion-card-title>Batt2go</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form action="/" #form="ngForm" method="post" id="payment-wallet">
+        
+        <ion-item>                 
+
+          <ion-label>Total Payment $: </ion-label>
+          <ion-input name="paymentAmount" type="text" placeholder="" [(ngModel)]="paymentAmount" readonly ></ion-input>
+        </ion-item>
+        <ion-item>                 
+
+          <ion-label>Credito: </ion-label>
+          <ion-input name="creditos" type="text" placeholder="" [(ngModel)]="creditos" readonly ></ion-input>
+        </ion-item>
+       
+        <ion-button type="submit" color="primary" expand="full" (click)="rentarbyWallet()">Make Payment</ion-button>        
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

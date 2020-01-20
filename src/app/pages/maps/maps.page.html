@@ -1,0 +1,162 @@
+<ion-menu  side="start" menuId="first">
+ 
+  <ion-row justify-content-left (click) = "loginPageForMenu()">
+      <ion-col align-self-left size-md="4" size-lg="4" size-xs="4">
+          <img width="80" height="80" src="assets/imgs/login_img.png">                                     
+      </ion-col>                      
+  </ion-row>    
+
+  <ion-content >
+    <ion-list>
+      <ion-item (click)="homePage()">
+        <img color="primary" src="assets/icon/home.png">  
+          &nbsp;          
+          <ion-text> HOME </ion-text>
+      </ion-item>
+      <ion-item (click)="historyPage()">          
+          <img color="primary" src="assets/icon/icono-history.png">  
+          &nbsp;                  
+          <ion-text> HISTORY </ion-text>
+      </ion-item>
+      <ion-item (click)="consultaWalletPage()">
+          <img color="primary" src="assets/icon/wallet.png">
+          &nbsp;          
+          <ion-text > WALLET </ion-text>
+      </ion-item>
+      <ion-item (click)="supportPage()">
+          <img color="primary" src="assets/icon/support.png">
+          &nbsp;          
+          <ion-text> SUPPORT </ion-text>
+      </ion-item>
+      <ion-item (click)="settingPage()">
+          <img color="primary" src="assets/icon/config.png">
+          &nbsp;          
+          <ion-text > SETTING </ion-text>
+      </ion-item>
+      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+  <ion-menu side="end" menuId="end" >
+      
+    <ion-row justify-content-left>
+        <ion-col align-self-left size-md="4" size-lg="4" size-xs="4">
+            <img width="50" height="50" src="assets/icon/base_2.png">                              
+        </ion-col>  
+        <ion-col align-self-center size-md="8" size-lg="8" size-xs="8">          
+            <ion-text class="my-labelsize" color="phantone"> Search</ion-text>
+        </ion-col>       
+    </ion-row>      
+
+      
+    <ion-content>               
+         <ion-card>                                  
+              <ion-col size-md="6" size-lg="6" size-xs="6">                                 
+                  <ion-text class="ionlabelsize_a" color="verde"> Search for Adrres, Location, Zipcode </ion-text>
+                  <ion-item >                      
+                     <ion-icon size="small" name="search"></ion-icon>
+                     <ion-input name="search" type="text" placeholder="Adrres / Location / Zipcode" [(ngModel)]="searchbase"></ion-input> 
+                  </ion-item>
+              </ion-col>
+              <ion-col size-md="6" size-lg="6" size-xs="6">                                 
+                  <ion-button color="verde" style="text-transform: none;" shape="round" size="medium" (click)="searchBaseByOption()" expand="block">Search</ion-button>
+              </ion-col>
+          
+         </ion-card>
+         <div *ngIf="issearchbase">
+            <ion-card *ngFor="let item of batterybase">               
+                <span (click) = "browser_url(item.longitud, item.latitud)">
+                    <ion-row>
+                        <ion-col text-left>
+                          
+                          <p>QR Code: {{item.codigo}}</p>
+                          <p>Location: {{item.ubicacion}}</p>                
+                          <p>Availability: {{item.disponibles}}</p>
+                          <p>Available Slots: {{item.retornables}}</p>                
+                                                                            
+                        </ion-col>                                                                              
+                    </ion-row>                
+                </span>                  
+            </ion-card>            
+         </div>
+         
+    </ion-content>
+  </ion-menu>
+
+<div class="ion-page" main >
+    <ion-header>
+        <ion-toolbar *ngIf="!isOpen">
+            <ion-buttons slot="start">
+              <ion-menu-button > 
+                 <!--ion-icon name="menu"></ion-icon-->
+
+                 <img  src="assets/icon/menu.png">
+            </ion-menu-button>
+            </ion-buttons>
+            <ion-title text-center >
+                           
+              <img src="assets/imgs/logobatt2gomapa_menu.png">
+                              
+            </ion-title>
+            <ion-buttons slot="end" class="text-right">
+              <ion-button (click)='openEnd()'>
+                 <!--ion-icon name="search"> </ion-icon-->
+               <img color="primary" src="assets/icon/lupa.png">
+            </ion-button>
+            </ion-buttons>          
+        </ion-toolbar>
+        <ion-toolbar *ngIf="isOpen">
+            <ion-title>QR Scanner Activate</ion-title>
+            <ion-buttons slot="primary" *ngIf="isOpen">
+                <ion-button slot="icon-only" (click)="closeScanner()">
+                    <ion-icon name="close"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+    <ion-content [class.show-qr-scanner]="isOpen">
+
+            <div id="map"></div>
+                                   
+            <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+              <ion-fab-button (click)="refreshmapa()" size="small" color="phantone2">
+                  <ion-icon color="blancobtt" name="locate"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+
+            <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+              <ion-fab-button (click)="refreshbase()" size="small" color="phantone2">
+                  <ion-icon color="blancobtt" name="refresh"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+
+            <!--ion-fab horizontal="end" vertical="center" slot="fixed">
+                <ion-fab-button (click)="supportPage()" size="small" color="azulbtt">
+                    <ion-icon color="blancobtt" name="headset"></ion-icon>
+                </ion-fab-button>
+            </ion-fab-->
+
+            <!--ion-fab  vertical="bottom" slot="fixed" horizontal="center"-->
+            <!--ion-fab   vertical="bottom" slot="fixed" style="margin-left: 30%;"-->
+           
+            <ion-fab  vertical="bottom" slot="fixed" style="margin-left: 32%;">
+                <ion-button class="button" shape="round" color="phantone2" size="medium" (click)="rentar_batt()">                  
+                    <ion-icon color="blancobtt" size="medium" slot="icon-only" name="qr-scanner"></ion-icon> 
+                    &nbsp;Rent
+                  
+               </ion-button> 
+            </ion-fab>
+
+
+            <!--ion-fab  vertical="bottom" slot="fixed" style="margin-left: 5%;">
+              <ion-button class="button" shape="round" color="danger" size="medium" (click)="pruebaruta()">
+                <ion-icon size="medium" slot="icon-only" name="qr-scanner"></ion-icon> 
+                &nbsp;Ruta</ion-button> 
+          </ion-fab-->
+
+      </ion-content>
+</div>
+
+
+

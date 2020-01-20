@@ -1,0 +1,40 @@
+<ion-header>        
+  <ion-toolbar>
+    <ion-buttons slot="start">      
+      <ion-button (click)="back()">        
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title text-center color = "verde" class="my-labelsize negrita" style="text-transform: none;">Send Mail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+     <div text-center>
+        <img width="150" height="150" src="assets/imgs/login_img.png">   
+        <br>                         
+    </div> 
+
+    <div padding>
+       
+       <ion-item>
+          <ion-label color="verde" stacked>To: </ion-label>
+          <ion-input [(ngModel)] = "to" type="email" placeholder="To" readonly required></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label color="verde" stacked>Subject: </ion-label>
+          <ion-input [(ngModel)] = "subject" type="text" placeholder="Type your subject." required></ion-input>
+      </ion-item>
+             
+      <ion-item>
+          <ion-label color="verde" stacked>Body Content: </ion-label>
+          
+          <ion-textarea [(ngModel)] = "content" maxlength="150" rows="6" cols="15" placeholder="Enter any notes here..."></ion-textarea>
+      </ion-item>
+      <ion-button color="verde" style="text-transform: none;" shape="round" size="medium" (click)="send()" expand="block">Send</ion-button>
+    </div>
+
+
+</ion-content>
