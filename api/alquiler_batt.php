@@ -4,13 +4,6 @@
     Header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
     Header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-
-    /*define('DB_HOST', '45.79.217.58');
-    define('DB_USER', 'dbadmin');
-    define('DB_PASS', 'charge*2019');
-    define('DB_NAME', 'Charger');
-    define('DB_PORT', '3306');*/
-
     require 'database.php';
 
 
